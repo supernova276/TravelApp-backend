@@ -1,4 +1,4 @@
-const {createHotel,getHotel,getHotelById,getHotelByCategory}=require('../controllers/hotel.controller')
+const {createHotel,getHotel,getHotelById,getHotelByCategory,deleteHotel}=require('../controllers/hotel.controller')
 const { verifyToken, verifyAdmin } = require('../middlewares/auth.jwt.middleware')
 
 module.exports=(app)=>{
