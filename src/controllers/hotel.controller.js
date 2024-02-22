@@ -50,7 +50,7 @@ exports.getHotelByCategory=async(req,res)=>{
         
         if(hotelCategory)
        { 
-        const hotels=await Category.find({category:hotelCategory})
+        const hotels=await Hotel.find({category:hotelCategory})
 
         if(!hotels){
             res.status(500).send({message:"could not find "})
