@@ -16,17 +16,18 @@ exports.createHotel= async(req,res)=>{
    }
 }
 
-exports.getHotel=async(req,res)=>{
+// exports.getHotel=async(req,res)=>{
 
-    try{
-        const hotels=await Hotel.find({})
-        return res.status(200).send(hotels)
-    }
-    catch(err){
-        console.log(err)
-        res.status(500).send({message:"could not get hotels"})
-    }
-}
+//     try{
+//         const hotels=await Hotel.find({})
+//         return res.status(200).send(hotels)
+//     }
+//     catch(err){
+//         console.log(err)
+//         res.status(500).send({message:"could not get hotels"})
+//     }
+// }
+//this route is causing a clash with the other gethotelbycategory route
 exports.getHotelById=async(req,res)=>{
     try{
         const id=req.params.id;
@@ -43,23 +44,23 @@ exports.getHotelById=async(req,res)=>{
 
 exports.getHotelByCategory=async(req,res)=>{
     
-    console.log("hello")
 
     try{
         const hotelCategory=req.query.category
         
         if(hotelCategory)
        { 
+       
         const hotels=await Hotel.find({category:hotelCategory})
 
         if(!hotels){
-            res.status(500).send({message:"could not find "})
+           return res.status(500).send({message:"could not find "})
         }
         return res.status(200).send(hotels)
     }
     else{
-        const hotels=await Category.find({})
-        return res.status(500).send(hotels)
+        const hotels=await Hotel.find({})
+        return res.status(200).send(hotels)
     }
     }
     catch(err){
