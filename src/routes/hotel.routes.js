@@ -2,7 +2,6 @@ const {createHotel,getHotel,getHotelById,getHotelByCategory,deleteHotel}=require
 const { verifyToken, verifyAdmin } = require('../middlewares/auth.jwt.middleware')
 
 module.exports=(app)=>{
-    console.log("hello inside routes")
     app.post('/travelApp/api/v1/hotels',[verifyToken,verifyAdmin],createHotel)
     app.get('/travelApp/api/v1/hotels',getHotelByCategory)
     // app.get('/travelApp/api/v1/hotels/all',getHotel)
