@@ -50,7 +50,7 @@ const hotelSchema=mongoose.Schema({
     type:String,
     required:true
    },
-   numberOfGeusts:{
+   numberOfguest:{
     type:String,
     required:true
    },

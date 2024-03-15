@@ -10,6 +10,20 @@ app.use(cors())
 const {PORT}=require('./configs/server.config')
 const{DB_URL}=require('./configs/db.config')
 
+
+const hotelRoutes=require('./src/routes/hotel.routes')
+const categoryRoutes=require('./src/routes/category.routes')
+const userRoutes=require('./src/routes/auth.routes')
+const wishListRoutes=require('./src/routes/wishlist.routes')
+const {pageNotFound}=require('./src/middlewares/PageNotFound')
+
+
+hotelRoutes(app)
+categoryRoutes(app)
+userRoutes(app)
+wishListRoutes(app)
+app.use(pageNotFound)
+
 mongoose.connect(DB_URL).then(()=>{
     console.log("app successfully connected to the db")
 }).catch((err)=>console.log(err))
